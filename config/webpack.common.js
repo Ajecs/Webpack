@@ -4,7 +4,7 @@ const path = require('path')
 var htmlWebpackPlugin = require('html-webpack-plugin')
 
 const config = {
-  entry: './js/index.js',
+  entry: './src/js/index.js',
   output: {
     filename: '[hash].bundle.js',
     path: path.resolve(__dirname, '../', 'bundle'),
@@ -28,7 +28,11 @@ const config = {
       },
     ],
   },
-  plugins: [new htmlWebpackPlugin()],
+  plugins: [
+    new htmlWebpackPlugin({
+    title: 'Webpack desde cero',
+    template: './src/index.html',
+  })],
   // Se debe instanciar un objeto del plugin
 }
 
