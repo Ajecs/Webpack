@@ -28,6 +28,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.js$/, 
+        exclude: /node_modules/,
+        // ! Excluye lo archivos js de node_modules por parte de babel
+        use: {
+          loader: 'babel-loader',
+        } 
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'], // sin style-loader para no inyectar css al DOM, sino utilizando  el loader del plugin
         // use: ['style-loader', 'css-loader'],
