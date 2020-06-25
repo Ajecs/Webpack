@@ -1,8 +1,40 @@
 body {
-  width: 100vw;
-  height: 100vh;
-  background-image: url('../img/person.jpg');
+  font-family: "Roboto", sans-serif;
+}
+header {
+  text-align: center;
+  background-image: url("../img/person.jpg");
   background-size: cover;
   background-position: center;
-  color: lightcoral;
+}
+h1 {
+  padding: 4rem;
+  margin: 0;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+main {
+  padding: 0.5rem;
+  min-height: 100vh;
+  background-color: goldenrod;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid:
+    repeat(auto-fill, minmax(10rem, 1fr))
+    / repeat(auto-fill, minmax(10rem, 1fr));
+  grid-auto-rows: minmax(10rem, 1fr);
+  grid-auto-flow: dense;
+}
+a {
+  display: block;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  background-color: white;
+  color: black;
 }

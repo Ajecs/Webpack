@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack desde cero</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
-</head>
-<body>
-  <h1>Cat grid</h1>
-  <div id="app"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack desde cero</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <h1>Cat grid!!!</h1>
+    </header>
+    <main>
+      <a href="#" @click="getCat">Cat's please 🙀</a>
+      <cat-image
+        v-for="(image, $index) in catImages"
+        :key="$index"
+        :url="image"
+      />
+    </main>
+    <div id="app"></div>
+  </body>
 </html>

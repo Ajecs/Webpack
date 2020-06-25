@@ -21,7 +21,7 @@ Vue.component('cat-image', {
 })
 
 new Vue({
-  el: 'index',
+  el: 'main',
   data: {
     catImages: ["https://cdn2.thecatapi.com/images/bun.jpg"]
   },
@@ -39,3 +39,10 @@ new Vue({
     }
   }
 })
+
+console.log('hidfdsfsdsd');
+
+if (module.hot) {
+  module.hot.accept()
+}
+// * Permite el uso de hot module replacement(HMR) en este modulo. Para que el estado no cambie.

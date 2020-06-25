@@ -2,13 +2,12 @@ const path = require('path')
 // Para obtener un path absoluto y asi crear el tipo de salida de webpack
 
 const HTMLWebpackPlugin = require('html-webpack-plugin'),
-  miniCssExtractPlugin = require('mini-css-extract-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+  MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
-  entry: './src/js/index.js',
+  entry: './src/js/main.js',
   output: {
-    filename: '[name].[contentHash].bundle.js',
+    filename: '[name].[hash].bundle.js',
     path: path.resolve(__dirname, '../', 'bundle'),
   },
   resolve: {
@@ -20,25 +19,38 @@ const config = {
     },
   },
   optimization: {
-    // * Permite el uso de code-splittin a partir del plugin preinstalado 
+    // * Permite el uso de code-splittin a partir del plugin preinstalado
     splitChunks: {
       chunks: 'all',
     },
   },
+  mode: 'development',
+  devServer: {
+    contentBase: './bundle',
+    hot: true,
+  },
   module: {
     rules: [
       {
-        test: /\.js$/, 
+        test: /\.js$/,
         exclude: /node_modules/,
         // ! Excluye lo archivos js de node_modules por parte de babel
         use: {
           loader: 'babel-loader',
-        } 
+        },
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'], // sin style-loader para no inyectar css al DOM, sino utilizando  el loader del plugin
-        // use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+              reloadAll: true,
+            },
+          },
+          'css-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
