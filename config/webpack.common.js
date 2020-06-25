@@ -2,7 +2,8 @@ const path = require('path')
 // Para obtener un path absoluto y asi crear el tipo de salida de webpack
 
 const HTMLWebpackPlugin = require('html-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin')
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const config = {
   entry: './src/js/main.js',
@@ -59,6 +60,7 @@ const config = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HTMLWebpackPlugin({
       title: 'Webpack desde cero',
